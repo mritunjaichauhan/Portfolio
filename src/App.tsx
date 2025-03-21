@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Code, Briefcase, User, Wrench, Star, Phone, ChevronDown, ExternalLink, FolderGit } from 'lucide-react';
 import { useTheme } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
+import profilePhoto from './components/photu.jpeg';
 
 const sections = [
   { id: 'home', title: 'TOP', icon: Star },
@@ -192,7 +193,7 @@ function App() {
           className="min-h-screen flex flex-col justify-center"
         >
           <motion.img
-            src="src/components/photu.jpeg"
+            src={profilePhoto}
             alt="Profile"
             className="w-52 h-52 rounded-full mb-12 object-cover scale-125"
             initial={{ scale: 0, opacity: 0 }}
