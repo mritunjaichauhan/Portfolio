@@ -18,69 +18,69 @@ const sections = [
 const services = [
   {
     id: 1,
-    title: 'Web Development',
-    description: 'Full-stack development with modern technologies like React, Node.js, and cloud services.'
+    title: 'Full Stack Development',
+    description: 'Building responsive web applications using React, Next.js, and Node.js with modern UI/UX principles.'
   },
   {
     id: 2,
-    title: 'Web Design',
-    description: 'Creating beautiful, responsive, and user-friendly interfaces that engage and delight users.'
+    title: 'Machine Learning Solutions',
+    description: 'Developing ML-powered applications using TensorFlow, PyTorch, and LangChain for intelligent automation.'
   },
   {
     id: 3,
-    title: 'Web Consulting',
-    description: 'Strategic guidance on web technologies, architecture, and best practices for your projects.'
+    title: 'Cloud & DevOps',
+    description: 'Implementing cloud solutions with AWS, Docker containers, and RESTful APIs for scalable applications.'
   }
 ];
 
 const skills = [
-  { name: 'React', level: 90 },
-  { name: 'TypeScript', level: 85 },
-  { name: 'Node.js', level: 80 },
-  { name: 'CSS/Tailwind', level: 95 },
-  { name: 'AWS', level: 75 },
-  { name: 'UI/UX Design', level: 85 }
+  { name: 'React/Next.js', level: 90 },
+  { name: 'Python/TensorFlow', level: 85 },
+  { name: 'Node.js/Express', level: 85 },
+  { name: 'TypeScript/JavaScript', level: 90 },
+  { name: 'Docker/AWS', level: 80 },
+  { name: 'MongoDB/MySQL', level: 75 }
 ];
 
 const projects = [
   {
-    title: 'Nanovo',
-    description: 'Design e-shop',
-    type: 'FRONTEND — BACKEND',
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&q=80'
+    title: 'VidGenix',
+    description: 'AI-powered Video Generation Platform',
+    type: 'AI — FULLSTACK',
+    image: 'https://images.unsplash.com/photo-1516900557549-41557d405adf?w=600&h=400&q=80'
   },
   {
-    title: 'Bbop',
-    description: 'Social Network for Musicians',
-    type: 'DESIGN — FRONTEND — BACKEND',
+    title: 'Sound Scout',
+    description: 'AI Music Analytics Platform',
+    type: 'MACHINE LEARNING — FRONTEND',
     image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&q=80'
   },
   {
-    title: 'Janja Prokić',
-    description: 'Jewelry e-shop',
-    type: 'FRONTEND — BACKEND',
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&q=80'
+    title: 'Code Sphere',
+    description: 'Cloud-based IDE Platform',
+    type: 'FULLSTACK — CLOUD',
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=400&q=80'
   }
 ];
 
 const experiences = [
   {
-    period: '2018 - now',
-    role: 'Freelance',
-    title: 'Full Stack Developer',
-    description: 'Working with clients worldwide on web applications and digital solutions.'
+    period: 'Feb 2025 - Present',
+    role: 'Hirecentive',
+    title: 'Software Developer Intern',
+    description: 'Developing web applications with Vite and Next.js, implementing user dashboards and integrating RESTful APIs.'
   },
   {
-    period: '2015 - 2018',
-    role: 'Facebook',
-    title: 'Senior Front-end Developer',
-    description: 'Led team of developers, built scalable UI components.'
+    period: 'June 2024 - July 2024',
+    role: 'Dept. of Digital Tech, Shimla',
+    title: 'Machine Learning Intern',
+    description: 'Developed NLP tools for document processing and created an AI-powered chatbot for information retrieval.'
   },
   {
-    period: '2013 - 2015',
-    role: 'Amazon',
-    title: 'Junior Front-end Developer',
-    description: 'Developed e-commerce interfaces and optimized user experience.'
+    period: '2022 - 2026',
+    role: 'Bennett University',
+    title: 'BTECH CSE Student',
+    description: 'Pursuing Computer Science Engineering with focus on AI/ML and web technologies.'
   }
 ];
 
@@ -192,7 +192,7 @@ function App() {
           className="min-h-screen flex flex-col justify-center"
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&q=80"
+            src="src/components/photu.jpeg"
             alt="Profile"
             className="w-48 h-48 rounded-full mb-12 object-cover"
             initial={{ scale: 0, opacity: 0 }}
@@ -206,7 +206,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            John Wilson
+            Mritunjai Chauhan
           </motion.h1>
           <motion.p 
             className="text-4xl font-bold mb-12"
@@ -214,7 +214,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            FREELANCE WEBDEVELOPER
+            SOFTWARE DEVELOPER & ML ENTHUSIAST
           </motion.p>
           <motion.button
             onClick={scrollToNextSection}
@@ -245,9 +245,8 @@ function App() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                I'm a passionate web developer with over 8 years of experience in creating
-                beautiful, functional, and user-friendly websites. I specialize in modern
-                web technologies and love turning complex problems into simple, elegant solutions.
+                I'm currently pursuing my BTECH CSE at Bennett University, Greater Noida (2022-2026). As a passionate software developer
+                and machine learning enthusiast, I love building innovative solutions that combine web technologies with AI capabilities.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, x: -50 }}
@@ -255,8 +254,8 @@ function App() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Whether you need a simple landing page or a complex web application,
-                I can help bring your vision to life with clean code and modern design principles.
+                My journey includes valuable experience through internships at Hirecentive and the Department of Digital Technologies, where
+                I've worked on cutting-edge projects involving full-stack development, AI, and machine learning.
               </motion.p>
             </div>
           </AnimatedSection>
@@ -422,10 +421,10 @@ function App() {
                 whileHover={{ x: 10 }}
               >
                 <a 
-                  href="mailto:john@wilson.com" 
+                  href="mailto:chauhanmritunjai@gmail.com" 
                   className={`flex items-center gap-4 hover:opacity-60 transition-opacity group`}
                 >
-                  john@wilson.com
+                  chauhanmritunjai@gmail.com
                   <ExternalLink size={32} className="group-hover:rotate-45 transition-transform duration-300" />
                 </a>
               </motion.p>
@@ -434,10 +433,10 @@ function App() {
                 whileHover={{ x: 10 }}
               >
                 <a 
-                  href="tel:+420652887351" 
+                  href="https://www.linkedin.com/in/mritunjai-chauhan" 
                   className={`flex items-center gap-4 hover:opacity-60 transition-opacity group`}
                 >
-                  +420 652 887 351
+                  LinkedIn Profile
                   <ExternalLink size={32} className="group-hover:rotate-45 transition-transform duration-300" />
                 </a>
               </motion.p>
