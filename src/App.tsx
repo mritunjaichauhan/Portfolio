@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Briefcase, User, Wrench, Star, Phone, ChevronDown, ExternalLink, FolderGit } from 'lucide-react';
+import { Code, Briefcase, User, Wrench, Star, Phone, ChevronDown, ExternalLink, FolderGit, Github, Linkedin } from 'lucide-react';
 import { useTheme } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
 import profilePhoto from './components/photu.jpeg';
@@ -202,7 +202,7 @@ function App() {
             whileHover={{ scale: 1.1 }}
           />
           <motion.h1 
-            className="text-9xl font-black mb-8 leading-tight"
+            className="text-8xl font-black mb-8 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -210,13 +210,36 @@ function App() {
             Mritunjai Chauhan
           </motion.h1>
           <motion.p 
-            className="text-4xl font-bold mb-12"
+            className="text-3xl font-bold mb-12"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             SOFTWARE DEVELOPER & ML ENTHUSIAST
           </motion.p>
+          <motion.div
+            className="flex gap-6 mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <a
+              href="https://github.com/mritunjai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hover:opacity-60 transition-opacity`}
+            >
+              <Github size={32} />
+            </a>
+            <a
+              href="https://linkedin.com/in/mritunjai-chauhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hover:opacity-60 transition-opacity`}
+            >
+              <Linkedin size={32} />
+            </a>
+          </motion.div>
           <motion.button
             onClick={scrollToNextSection}
             className={`group flex items-center gap-3 text-2xl font-bold hover:opacity-60 transition-opacity`}
@@ -429,18 +452,24 @@ function App() {
                   <ExternalLink size={32} className="group-hover:rotate-45 transition-transform duration-300" />
                 </a>
               </motion.p>
-              <motion.p 
-                className="text-3xl"
-                whileHover={{ x: 10 }}
-              >
-                <a 
-                  href="https://www.linkedin.com/in/mritunjai-chauhan" 
-                  className={`flex items-center gap-4 hover:opacity-60 transition-opacity group`}
+              <div className="flex gap-6 mt-8">
+                <a
+                  href="https://github.com/mritunjai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`hover:opacity-60 transition-opacity`}
                 >
-                  LinkedIn Profile
-                  <ExternalLink size={32} className="group-hover:rotate-45 transition-transform duration-300" />
+                  <Github size={32} />
                 </a>
-              </motion.p>
+                <a
+                  href="https://linkedin.com/in/mritunjai-chauhan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`hover:opacity-60 transition-opacity`}
+                >
+                  <Linkedin size={32} />
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </section>
