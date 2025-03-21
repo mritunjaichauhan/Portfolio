@@ -194,7 +194,7 @@ function App() {
           <motion.img
             src="src/components/photu.jpeg"
             alt="Profile"
-            className="w-48 h-48 rounded-full mb-12 object-cover"
+            className="w-52 h-52 rounded-full mb-12 object-cover scale-125"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8 }}
