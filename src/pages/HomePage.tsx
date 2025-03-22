@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, useScroll } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Briefcase, User, Wrench, Star, Phone, ChevronDown, ExternalLink, FolderGit, Github, Linkedin } from 'lucide-react';
@@ -148,6 +148,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 
 function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { theme } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -172,6 +173,28 @@ function HomePage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle scrolling to section based on navigation state
+  useEffect(() => {
+    if (location.state && location.state.scrollToSection) {
+      const sectionId = location.state.scrollToSection;
+      const sectionElement = sectionRefs.current[sectionId];
+      
+      if (sectionElement) {
+        // Use a small timeout to ensure the scroll happens after render
+        setTimeout(() => {
+          // Calculate position with offset to scroll a bit higher than the exact section start
+          const yOffset = -5; // Positive value scrolls higher (adjust as needed)
+          const y = sectionElement.getBoundingClientRect().top + window.pageYOffset - yOffset;
+          
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
+      }
+      
+      // Clear the state to avoid scrolling again on future navigation
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   const scrollToNextSection = () => {
     const aboutSection = sectionRefs.current['about'];

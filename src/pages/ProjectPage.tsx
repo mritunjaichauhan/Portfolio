@@ -21,7 +21,8 @@ function ProjectPage() {
 
   // Navigate back to the projects section
   const handleBackClick = () => {
-    navigate('/#projects');
+    // Use state to indicate we want to scroll to the projects section
+    navigate('/', { state: { scrollToSection: 'projects' } });
   };
 
   return (
