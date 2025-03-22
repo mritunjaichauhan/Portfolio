@@ -232,7 +232,7 @@ function App() {
               <Github size={32} />
             </a>
             <a
-              href="www.linkedin.com/in/mritunjai-chauhan-903607251"
+              href="https://linkedin.com/in/mritunjai-chauhan-903607251"
               target="_blank"
               rel="noopener noreferrer"
               className={`hover:opacity-60 transition-opacity`}
