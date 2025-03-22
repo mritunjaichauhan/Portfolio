@@ -224,7 +224,7 @@ function App() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a
-              href="https://github.com/mritunjai"
+              href="https://github.com/mritunjaichauhan"
               target="_blank"
               rel="noopener noreferrer"
               className={`hover:opacity-60 transition-opacity`}
@@ -232,7 +232,7 @@ function App() {
               <Github size={32} />
             </a>
             <a
-              href="https://linkedin.com/in/mritunjai-chauhan"
+              href="www.linkedin.com/in/mritunjai-chauhan-903607251"
               target="_blank"
               rel="noopener noreferrer"
               className={`hover:opacity-60 transition-opacity`}
