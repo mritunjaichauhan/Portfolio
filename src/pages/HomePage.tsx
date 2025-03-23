@@ -290,7 +290,7 @@ function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a
-              href="https://github.com/mritunjai"
+              href="https://github.com/mritunjaichauhan"
               target="_blank"
               rel="noopener noreferrer"
               className={`hover:opacity-60 transition-opacity`}
