@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { Code, Briefcase, User, Wrench, Star, Phone, ChevronDown, ExternalLink, FolderGit, Github, Linkedin } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { TubelightNavbar } from '../components/ui/tubelight-navbar';
 import profilePhoto from '../components/photu.jpeg';
 
 const sections = [
@@ -37,9 +38,9 @@ const services = [
 
 const skills = [
   { name: 'React/Next.js', level: 90 },
+  { name: 'TypeScript/JavaScript', level: 90 },
   { name: 'Python/TensorFlow', level: 85 },
   { name: 'Node.js/Express', level: 85 },
-  { name: 'TypeScript/JavaScript', level: 90 },
   { name: 'Docker/AWS', level: 80 },
   { name: 'MongoDB/MySQL', level: 75 }
 ];
@@ -211,7 +212,7 @@ function HomePage() {
       
       {/* Progress Bar */}
       <motion.div
-        className={`fixed top-0 left-0 right-0 h-1 z-50 ${
+        className={`fixed top-0 left-0 right-0 h-1 z-50 hidden sm:block ${
           theme === 'dark' ? 'bg-white' : 'bg-black'
         }`}
         style={{ scaleX: scrollYProgress }}
@@ -251,34 +252,22 @@ function HomePage() {
         </ul>
       </motion.nav>
       
-      {/* Mobile Navigation */}
-      <motion.nav
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 sm:hidden"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className={`flex gap-2 p-2 rounded-full ${
-          theme === 'dark' ? 'bg-white/10 backdrop-blur-md' : 'bg-black/10 backdrop-blur-md'
-        }`}>
-          {sections.map((section) => {
-            const Icon = section.icon;
-            return (
-              <a
-                key={section.id}
-                href={`#${section.id}`}
-                className={`p-2 rounded-full transition-colors ${
-                  activeSection === section.id 
-                    ? (theme === 'dark' ? 'bg-white/20 text-white' : 'bg-black/20 text-black') 
-                    : ''
-                }`}
-              >
-                <Icon size={20} />
-              </a>
-            );
-          })}
-        </div>
-      </motion.nav>
+      {/* Mobile Navigation with TubelightNavbar */}
+      <TubelightNavbar 
+        items={sections.map(section => ({
+          name: section.title,
+          url: `#${section.id}`,
+          icon: section.icon,
+          id: section.id
+        }))}
+        activeSection={activeSection}
+        setActiveSection={(sectionId: string) => {
+          const sectionElement = sectionRefs.current[sectionId];
+          if (sectionElement) {
+            sectionElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-8 md:px-16 lg:px-32">
@@ -431,9 +420,9 @@ function HomePage() {
                 >
                   <div className="flex justify-between mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl font-bold">
                     <span>{skill.name}</span>
-                    <span>{skill.level}%</span>
+                    <span className="ml-4">{skill.level}%</span>
                   </div>
-                  <div className={`h-2 sm:h-3 ${
+                  <div className={`h-2 sm:h-3 w-full ${
                     theme === 'dark' ? 'bg-white/10' : 'bg-black/10'
                   } rounded-full overflow-hidden`}>
                     <motion.div
@@ -546,6 +535,18 @@ function HomePage() {
                 >
                   chauhanmritunjai@gmail.com
                   <ExternalLink size={20} className="sm:w-8 sm:h-8 group-hover:rotate-45 transition-transform duration-300" />
+                </a>
+              </motion.p>
+              <motion.p 
+                className="text-xl sm:text-2xl md:text-3xl"
+                whileHover={{ x: 10 }}
+              >
+                <a 
+                  href="tel:+919816384043" 
+                  className={`flex items-center gap-2 sm:gap-4 hover:opacity-60 transition-opacity group`}
+                >
+                  +91 9816384043
+                  <Phone size={20} className="sm:w-8 sm:h-8 group-hover:rotate-45 transition-transform duration-300" />
                 </a>
               </motion.p>
               <div className="flex gap-6 mt-8">
