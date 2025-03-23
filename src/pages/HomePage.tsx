@@ -220,12 +220,12 @@ function HomePage() {
 
       {/* Right Navigation */}
       <motion.nav 
-        className="fixed right-12 top-1/3 -translate-y-1/2 z-50"
+        className="fixed right-4 sm:right-8 lg:right-12 top-1/3 -translate-y-1/2 z-50 hidden sm:block"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <ul className="space-y-8">
+        <ul className="space-y-4 sm:space-y-8">
           {sections.map((section) => (
             <motion.li 
               key={section.id}
@@ -234,13 +234,13 @@ function HomePage() {
             >
               <a
                 href={`#${section.id}`}
-                className={`flex items-center gap-3 group ${
+                className={`flex items-center gap-2 sm:gap-3 group ${
                   activeSection === section.id 
                     ? (theme === 'dark' ? 'text-white' : 'text-black')
                     : (theme === 'dark' ? 'text-white/40' : 'text-black/40')
                 }`}
               >
-                <span className={`text-lg font-bold transition-all duration-300 group-hover:${
+                <span className={`text-base sm:text-lg font-bold transition-all duration-300 group-hover:${
                   theme === 'dark' ? 'text-white' : 'text-black'
                 }`}>
                   {section.title}
@@ -250,9 +250,38 @@ function HomePage() {
           ))}
         </ul>
       </motion.nav>
+      
+      {/* Mobile Navigation */}
+      <motion.nav
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 sm:hidden"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className={`flex gap-2 p-2 rounded-full ${
+          theme === 'dark' ? 'bg-white/10 backdrop-blur-md' : 'bg-black/10 backdrop-blur-md'
+        }`}>
+          {sections.map((section) => {
+            const Icon = section.icon;
+            return (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className={`p-2 rounded-full transition-colors ${
+                  activeSection === section.id 
+                    ? (theme === 'dark' ? 'bg-white/20 text-white' : 'bg-black/20 text-black') 
+                    : ''
+                }`}
+              >
+                <Icon size={20} />
+              </a>
+            );
+          })}
+        </div>
+      </motion.nav>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 md:px-16 lg:px-32">
         <section 
           id="home" 
           ref={el => sectionRefs.current['home'] = el}
@@ -268,7 +297,7 @@ function HomePage() {
             whileHover={{ scale: 1.1 }}
           />
           <motion.h1 
-            className="text-8xl font-black mb-8 leading-tight"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-8 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -276,7 +305,7 @@ function HomePage() {
             Mritunjai Chauhan
           </motion.h1>
           <motion.p 
-            className="text-3xl font-bold mb-12"
+            className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -327,8 +356,8 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-12">ABOUT ME</h2>
-            <div className="space-y-8 text-2xl leading-relaxed">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 sm:mb-12">ABOUT ME</h2>
+            <div className="space-y-6 sm:space-y-8 text-lg sm:text-xl md:text-2xl leading-relaxed">
               <motion.p
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -357,8 +386,8 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-16">MY SERVICES</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 sm:mb-16">MY SERVICES</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-12">
               {services.map((service, index) => (
                 <motion.div 
                   key={service.id}
@@ -366,16 +395,16 @@ function HomePage() {
                     theme === 'dark' 
                       ? 'bg-white/5 hover:bg-white/10' 
                       : 'bg-black/5 hover:bg-black/10'
-                  } backdrop-blur-sm p-12 rounded-2xl transition-all duration-300`}
+                  } backdrop-blur-sm p-6 sm:p-12 rounded-2xl transition-all duration-300`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -10, scale: 1.02 }}
                 >
-                  <h3 className="text-4xl font-bold mb-6">#{service.id}</h3>
-                  <h4 className="text-2xl font-bold mb-6">{service.title}</h4>
-                  <p className={`text-xl ${
+                  <h3 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6">#{service.id}</h3>
+                  <h4 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{service.title}</h4>
+                  <p className={`text-base sm:text-xl ${
                     theme === 'dark' ? 'text-white/80' : 'text-black/80'
                   }`}>{service.description}</p>
                 </motion.div>
@@ -390,8 +419,8 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-16">SKILLS</h2>
-            <div className="space-y-12">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 sm:mb-16">SKILLS</h2>
+            <div className="space-y-8 sm:space-y-12">
               {skills.map((skill, index) => (
                 <motion.div 
                   key={skill.name}
@@ -400,11 +429,11 @@ function HomePage() {
                   transition={{ duration: 0.8, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex justify-between mb-4 text-2xl font-bold">
+                  <div className="flex justify-between mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl font-bold">
                     <span>{skill.name}</span>
                     <span>{skill.level}%</span>
                   </div>
-                  <div className={`h-3 ${
+                  <div className={`h-2 sm:h-3 ${
                     theme === 'dark' ? 'bg-white/10' : 'bg-black/10'
                   } rounded-full overflow-hidden`}>
                     <motion.div
@@ -429,8 +458,8 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-16">PROJECTS</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 sm:mb-16">PROJECTS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12">
               {projects.map((project, index) => (
                 <motion.div 
                   key={project.id}
@@ -450,14 +479,14 @@ function HomePage() {
                   <motion.div 
                     className={`absolute inset-0 ${
                       theme === 'dark' ? 'bg-black/80' : 'bg-black/60'
-                    } p-8 flex flex-col justify-end`}
+                    } p-4 sm:p-8 flex flex-col justify-end`}
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-xl text-white/80 mb-4">{project.description}</p>
-                    <p className="text-sm font-bold text-white/60">{project.type}</p>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">{project.title}</h3>
+                    <p className="text-base sm:text-lg md:text-xl text-white/80 mb-2 sm:mb-4">{project.description}</p>
+                    <p className="text-xs sm:text-sm font-bold text-white/60">{project.type}</p>
                   </motion.div>
                 </motion.div>
               ))}
@@ -471,26 +500,26 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-16">EXPERIENCES</h2>
-            <div className="space-y-16">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 sm:mb-16">EXPERIENCES</h2>
+            <div className="space-y-8 sm:space-y-16">
               {experiences.map((exp, index) => (
                 <motion.div 
                   key={exp.period} 
                   className={`border-l-4 ${
                     theme === 'dark' ? 'border-white' : 'border-black'
-                  } pl-12 relative`}
+                  } pl-6 sm:pl-12 relative`}
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <div className={`absolute w-6 h-6 ${
+                  <div className={`absolute w-4 sm:w-6 h-4 sm:h-6 ${
                     theme === 'dark' ? 'bg-white' : 'bg-black'
-                  } rounded-full -left-[14px] top-2`} />
-                  <p className="text-xl mb-4">{exp.period}</p>
-                  <h3 className="text-4xl font-bold mb-4">{exp.role}</h3>
-                  <p className="text-2xl mb-4">{exp.title}</p>
-                  <p className={`text-xl ${
+                  } rounded-full -left-[10px] sm:-left-[14px] top-2`} />
+                  <p className="text-base sm:text-xl mb-2 sm:mb-4">{exp.period}</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">{exp.role}</h3>
+                  <p className="text-lg sm:text-xl md:text-2xl mb-2 sm:mb-4">{exp.title}</p>
+                  <p className={`text-base sm:text-lg md:text-xl ${
                     theme === 'dark' ? 'text-white/80' : 'text-black/80'
                   }`}>{exp.description}</p>
                 </motion.div>
@@ -505,23 +534,23 @@ function HomePage() {
           className="min-h-screen flex items-center"
         >
           <AnimatedSection>
-            <h2 className="text-8xl font-black mb-16">CONTACT</h2>
-            <div className="space-y-8">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-8 sm:mb-16">CONTACT</h2>
+            <div className="space-y-6 sm:space-y-8">
               <motion.p 
-                className="text-3xl"
+                className="text-xl sm:text-2xl md:text-3xl"
                 whileHover={{ x: 10 }}
               >
                 <a 
                   href="mailto:chauhanmritunjai@gmail.com" 
-                  className={`flex items-center gap-4 hover:opacity-60 transition-opacity group`}
+                  className={`flex items-center gap-2 sm:gap-4 hover:opacity-60 transition-opacity group`}
                 >
                   chauhanmritunjai@gmail.com
-                  <ExternalLink size={32} className="group-hover:rotate-45 transition-transform duration-300" />
+                  <ExternalLink size={20} className="sm:w-8 sm:h-8 group-hover:rotate-45 transition-transform duration-300" />
                 </a>
               </motion.p>
               <div className="flex gap-6 mt-8">
                 <a
-                  href="https://github.com/mritunjai"
+                  href="https://github.com/mritunjaichauhan"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`hover:opacity-60 transition-opacity`}
